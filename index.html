@@ -94,12 +94,34 @@
 					</i>
 				</p>
 				<br />
-				<p>[Explanation]</p>
-				<ul>
-					<li>K-means</li>
-					<li>GMM</li>
-					<li>...</li>
-				</ul>
+				<p>
+					We intend to use the <a href="https://www.kaggle.com/futurecorporation/epitope-prediction">COVID-19/SARS B-cell Epitope Prediction</a>
+					database derived from <a href = "https://www.iedb.org/">IEDB</a>
+					and <a href="https://www.uniprot.org/">UniProt</a>.&nbsp
+					This database contains 14 features of 14907 epitopes divided
+					into general B-Cells and SARS.&nbsp It also contains 13 features of
+					20305 COVID-19 epitopes which we will label with antibody valence during
+					the supervised phase of our project.
+				</p>
+				<br />
+				<p>
+					For the unsupervised learning phase of our project, we intend to perform
+					feature engineering through two approaches.&nbsp First clustering our data using
+					clustering algorithms such as KMeans, GMM, and DBScan.&nbsp We will then perform
+					clustering analysis to determine the efficacy of each approach for our dataset.&nbsp
+					This can help us find underlying similarities in our data which can
+					help us determine which features are important for predicting vaccine candidacy.&nbsp
+					Second, we will use Principal Component Analysis to reduce the dimensionality
+					of our data as appropriate.
+				</p>
+				<br />
+				<p>
+					For the supervised learning phase of our project, we plan to use an ensemble of weak
+					learners such as random forests and decision trees along with a neural network in order
+					to predict antibody valence (and thus vaccine efficacy) given a protein sequence and relevant
+					features.&nbsp We will split our labeled data into a training and testing set to accomplish this,
+					however, ultimately we intend to classify the unlabelled COVID-19 Epitopes.
+				</p>
 			</section>
 			<section id="results">
 				<h2>Results</h2>
