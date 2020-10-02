@@ -1,204 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>COVID-19 Epitope Prediction</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="icon" href="assets/favicon.png" />
-</head>
-
-<body>
-	<header>
-		<div class="banner">
-			<div class="title">
-				<h1>COVID-19&nbsp;Epitope&nbsp;Prediction</h1>
-				<h3>Adam Hordines, Shweta Murali, Pavan Namani, Michael Ryan</h3>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>COVID-19 Epitope Prediction</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="icon" href="assets/favicon.png" />
+	</head>
+	<body>
+		<header>
+			<div class="banner">
+				<div class="title">
+					<h1>COVID-19&nbsp;Epitope&nbsp;Prediction</h1>
+					<h3>Adam Hordines, Shweta Murali, Pavan Namani, Michael Ryan</h3>
+				</div>
 			</div>
-		</div>
-		<nav>
-			<ul>
-				<li>
-					<a href="#summary">
-						<p>Summary Figure</p>
+			<nav>
+				<ul>
+					<li>
+						<a href="#summary">
+							<p>Summary Figure</p>
+						</a>
+					</li>
+					<li>
+						<a href="#introduction">
+							<p>Introduction</p>
+						</a>
+					</li>
+					<li>
+						<a href="#methods">
+							<p>Methods</p>
+						</a>
+					</li>
+					<li>
+						<a href="#results">
+							<p>Results</p>
+						</a>
+					</li>
+					<li>
+						<a href="#discussion">
+							<p>Discussion</p>
+						</a>
+					</li>
+					<li>
+						<a href="#references">
+							<p>References</p>
+						</a>
+					</li>
+					<li style="float: right">
+						<a href="https://github.com/shwetamurali/cs-4641">
+							<img src="assets/GitHub-Mark-Light-32px.png" />
+							<p>View on Github</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section id="summary">
+				<h2>Summary Figure</h2>
+				<p>
+					<i>
+						one infographic prepared by your team that summarizes your project
+						goal
+					</i>
+				</p>
+				<br />
+				<p>
+					The goal of the project is to create a model that can determine a
+					protein sequence's <i>antibody valence</i> &mdash; whether it is
+					possible to use as a vaccine &mdash; based on its chemical properties.
+					We hope to find a clustering solution such that such sequences with
+					antibody valence are clustered together, and a neural network which
+					can assign a sequence a binary classification where "True" would mean
+					that sequence could be useful as a vaccine.
+				</p>
+				<img src="assets/clustering_idea.png" />
+				<img src="assets/nn_idea.png" />
+			</section>
+			<section id="introduction">
+				<h2>Introduction</h2>
+				<p>
+					<i>
+						discussing the problem you aim to address, your motivation and goal
+					</i>
+				</p>
+				<br />
+				<p>
+					This project aims to address the problem of selecting which parts of a
+					virus's protein shell can be used to create a vaccine. Instead of
+					manually searching for and testing each <i>epitope</i> &mdash; a
+					region of the protein sequence &mdash; individually, vaccine
+					developers would use this model to narrow down their options to only
+					those epitopes most likely to produce an immune response. When the
+					epitopes trigger an immune response, they are "antibody-valent" and
+					bind with antibodies. This prompts B-cells to fight and remember the
+					virus, the goal of a vaccine.
+				</p>
+				<img src="assets/epitope_antibody.png" />
+				<p>
+					Narrowing the search should speed up the process of determining which
+					protein sequences should be synthesized and tested as a vaccine in
+					clinical trials. The motivation is that with quicker time to clinical
+					trials and a higher liklihood of those trials producing a functional
+					vaccine, vaccines for new contagions can be produced more quickly,
+					potentially saving lives.
+				</p>
+			</section>
+			<section id="methods">
+				<h2>Methods</h2>
+				<p>
+					<i>
+						outlining the dataset you are planning on utilizing and the
+						techniques you intend to apply
+					</i>
+				</p>
+				<br />
+				<p>
+					We intend to use the
+					<a href="https://www.kaggle.com/futurecorporation/epitope-prediction">
+						COVID-19/SARS B-cell Epitope Prediction
 					</a>
-				</li>
-				<li>
-					<a href="#introduction">
-						<p>Introduction</p>
+					database derived from <a href="https://www.iedb.org/">IEDB</a> and
+					<a href="https://www.uniprot.org/">UniProt</a>.&nbsp This database
+					contains 14 features of 14907 epitopes divided into general B-Cells
+					and SARS.&nbsp It also contains 13 features of 20305 COVID-19 epitopes
+					which we will label with antibody valence during the supervised phase
+					of our project.
+				</p>
+				<img src="assets/clustering_example.png" />
+				<p>
+					For the unsupervised learning phase of our project, we intend to
+					perform feature engineering through two approaches.&nbsp First
+					clustering our data using clustering algorithms such as KMeans, GMM,
+					and DBScan.&nbsp We will then perform clustering analysis to determine
+					the efficacy of each approach for our dataset.&nbsp This can help us
+					find underlying similarities in our data which can help us determine
+					which features are important for predicting vaccine candidacy.&nbsp
+					Second, we will use Principal Component Analysis to reduce the
+					dimensionality of our data as appropriate.
+				</p>
+				<img src="assets/supervised_example.png" />
+				<p>
+					For the supervised learning phase of our project, we plan to use an
+					ensemble of a random forest along with a neural network in order to
+					predict antibody valence (and thus vaccine efficacy) given a protein
+					sequence and relevant features.&nbsp We will split our labeled data
+					into a training and testing set to accomplish this, however, ultimately
+					we intend to classify the unlabelled COVID-19 Epitopes.
+				</p>
+			</section>
+			<section id="results">
+				<h2>Results</h2>
+				<p>
+					<i> describing the results your team is trying to achieve </i>
+				</p>
+				<br />
+				<p>
+					Our intended result is to identify which antigens could be used in a
+					COVID-19 vaccine, based on antibody valence. To evaluate the
+					performance of our model, we will be splitting our data into a
+					training and testing set. We want to emphasize our goal of having a
+					high recall. This is vital because we must make sure that we do not
+					have any false negatives- this would mean missing epitopes that could
+					be used in a vaccine. Although precision is also important, having a
+					false negative would cause much more harm than having a false positive
+					in our case. Therefore, we want to mainly ensure that we are gathering
+					all possible solutions.
+				</p>
+				<img src="assets/results_chart.png" />
+			</section>
+			<section id="discussion">
+				<h2>Discussion</h2>
+				<p>
+					<i>
+						explaining what would be the best outcome, what it would mean, what
+						is next, etc.
+					</i>
+				</p>
+				<br />
+				<p>
+					Our ideal output would be a model that predicts the antibody valence
+					of a given protein sequence and relavant traits of the protein. We aim
+					to narrow down the list of epitopes to test for the vaccine of
+					COVID-19 or similar strains of the virus by optimizing our model to
+					dismiss false negatives.
+					<br />
+					<br />
+					With a successful model, scientists and vaccine manufacturers gain a
+					deeper insight into immune responses to COVID-19 and similar strains
+					of the virus. In turn, this results in a faster development of
+					COVID-19 vaccine, and future vaccines of similar viruses. As vaccines
+					are essential for immunity against the virus, this model can in turn
+					eliminate the spread of the COVID-19 virus.
+				</p>
+			</section>
+			<section id="references">
+				<h2>References</h2>
+				<p>
+					<i>
+						list containing at least three references, preferably peer reviewed
+					</i>
+				</p>
+				<br />
+				<p>
+					Jose L. Sanchez-Trincado, Marta Gomez-Perosanz, Pedro A. Reche,
+					"Fundamentals and Methods for T- and B-Cell Epitope Prediction",
+					<em>Journal of Immunology Research</em>, vol. 2017, Article ID
+					2680160, 14 pages, 2017.
+					<a href="https://doi.org/10.1155/2017/2680160">
+						https://doi.org/10.1155/2017/2680160
 					</a>
-				</li>
-				<li>
-					<a href="#methods">
-						<p>Methods</p>
+				</p>
+				<p>
+					Kunchur Guruprasad, B.V.Bhasker Reddy, Madhusudan W. Pandit,
+					Correlation between stability of a protein and its dipeptide
+					composition: a novel approach for predicting
+					<em>in vivo</em> stability of a protein from its primary sequence,
+					<em>Protein Engineering, Design and Selection</em>, Volume 4, Issue 2,
+					December 1990, Pages 155–161,
+					<a href="https://doi.org/10.1093/protein/4.2.155">
+						https://doi.org/10.1093/protein/4.2.155
 					</a>
-				</li>
-				<li>
-					<a href="#results">
-						<p>Results</p>
-					</a>
-				</li>
-				<li>
-					<a href="#discussion">
-						<p>Discussion</p>
-					</a>
-				</li>
-				<li>
-					<a href="#references">
-						<p>References</p>
-					</a>
-				</li>
-				<li style="float: right">
-					<a href="https://github.com/shwetamurali/cs-4641">
-						<img src="assets/GitHub-Mark-Light-32px.png" />
-						<p>View on Github</p>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section id="summary">
-			<h2>Summary Figure</h2>
-			<p>
-				<i>
-					one infographic prepared by your team that summarizes your project
-					goal
-				</i>
-			</p>
-			<br />
-			<p>[Brief description of the figures below and the project goal]</p>
-			<img src="assets/clustering_idea.png" />
-			<img src="assets/nn_idea.png" />
-		</section>
-		<section id="introduction">
-			<h2>Introduction</h2>
-			<p>
-				<i>
-					discussing the problem you aim to address, your motivation and goal
-				</i>
-			</p>
-			<br />
-			<p>
-				This project aims to address the problem of selecting which parts of a
-				virus's protein shell can be used to create a vaccine. Instead of
-				manually searching for and testing each <i>epitope</i> &mdash; a
-				region of the protein sequence &mdash; individually, vaccine
-				developers would use this model to narrow down their options to only
-				those epitopes most likely to produce an immune response.
-			</p>
-			[Image here?]
-			<p>
-				This should speed up the process of determining which protein
-				sequences should be synthesized and tested as a vaccine in clinical
-				trials. The motivation is that with quicker time to clinical trials
-				and a higher liklihood of those trials producing a functional vaccine,
-				vaccines for new contagions can be produced more quickly, potentially
-				saving lives.
-			</p>
-		</section>
-		<section id="methods">
-			<h2>Methods</h2>
-			<p>
-				<i>
-					outlining the dataset you are planning on utilizing and the
-					techniques you intend to apply
-				</i>
-			</p>
-			<br />
-			<p>
-				We intend to use the <a href="https://www.kaggle.com/futurecorporation/epitope-prediction">COVID-19/SARS
-					B-cell Epitope Prediction</a>
-				database derived from <a href="https://www.iedb.org/">IEDB</a>
-				and <a href="https://www.uniprot.org/">UniProt</a>.&nbsp
-				This database contains 14 features of 14907 epitopes divided
-				into general B-Cells and SARS.&nbsp It also contains 13 features of
-				20305 COVID-19 epitopes which we will label with antibody valence during
-				the supervised phase of our project.
-			</p>
-			<br />
-			<p>
-				For the unsupervised learning phase of our project, we intend to perform
-				feature engineering through two approaches.&nbsp First clustering our data using
-				clustering algorithms such as KMeans, GMM, and DBScan.&nbsp We will then perform
-				clustering analysis to determine the efficacy of each approach for our dataset.&nbsp
-				This can help us find underlying similarities in our data which can
-				help us determine which features are important for predicting vaccine candidacy.&nbsp
-				Second, we will use Principal Component Analysis to reduce the dimensionality
-				of our data as appropriate.
-			</p>
-			<br />
-			<p>
-				For the supervised learning phase of our project, we plan to use an ensemble of weak
-				learners such as random forests and decision trees along with a neural network in order
-				to predict antibody valence (and thus vaccine efficacy) given a protein sequence and relevant
-				features.&nbsp We will split our labeled data into a training and testing set to accomplish this,
-				however, ultimately we intend to classify the unlabelled COVID-19 Epitopes.
-			</p>
-		</section>
-		<section id="results">
-			<h2>Results</h2>
-			<p>
-				<i> describing the results your team is trying to achieve </i>
-			</p>
-			<br />
-			<p>
-				[High recall - correctly identifying every good candidate for a
-				vaccine...]
-			</p>
-		</section>
-		<section id="discussion">
-			<h2>Discussion</h2>
-			<p>
-				<i>
-					explaining what would be the best outcome, what it would mean, what is next, etc.
-				</i>
-			</p>
-			<br />
-			<p>
-
-				Our ideal output would be a model that predicts the antibody valence of a given protein sequence and
-				relavant traits of the protein.
-				We aim to narrow down the list of epitopes to test for the vaccine of COVID-19 or similar strains of the
-				virus
-				by optimizing our model to dismiss false negatives.
-				</br>
-				</br>
-				With a successful model, scientists and vaccine manufacturers gain a deeper insight into immune
-				responses to COVID-19 and similar strains of the virus.
-				In turn, this results in a faster development of COVID-19 vaccine, and future vaccines of similar
-				viruses.
-				As vaccines are essential for immunity against the virus, this model can in turn eliminate the spread of
-				the COVID-19 virus.
-			</p>
-		</section>
-		<section id="references">
-			<h2>References</h2>
-			<p>
-				<i>
-					list containing at least three references, preferably peer reviewed
-				</i>
-			</p>
-			<br />
-			<p>
-				Jose L. Sanchez-Trincado, Marta Gomez-Perosanz, Pedro A. Reche,
-				"Fundamentals and Methods for T- and B-Cell Epitope Prediction",
-				<em>Journal of Immunology Research</em>, vol. 2017, Article ID
-				2680160, 14 pages, 2017.
-				<a href="https://doi.org/10.1155/2017/2680160">https://doi.org/10.1155/2017/2680160</a>
-			</p>
-			<p>
-				Kunchur Guruprasad, B.V.Bhasker Reddy, Madhusudan W. Pandit,
-				Correlation between stability of a protein and its dipeptide
-				composition: a novel approach for predicting
-				<em>in vivo</em> stability of a protein from its primary sequence,
-				<em>Protein Engineering, Design and Selection</em>, Volume 4, Issue 2,
-				December 1990, Pages 155–161,
-				<a href="https://doi.org/10.1093/protein/4.2.155">https://doi.org/10.1093/protein/4.2.155</a>
-			</p>
-		</section>
-	</main>
-</body>
-
+				</p>
+				<p>
+					Lundegaard, Claus et al. “Prediction of epitopes using neural network based methods.”
+					<em>Journal of immunological methods</em> vol. 374,1-2 (2011): 26-34.
+					<a href="https://doi.org/10.1016/j.jim.2010.10.011">https://doi.org/10.1016/j.jim.2010.10.011</a>
+				</p>
+			</section>
+		</main>
+	</body>
 </html>
