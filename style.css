@@ -135,6 +135,11 @@ section i {
 section img {
 	max-height: 30vh;
 	max-width: 100%;
+	margin: 1em 0;
+}
+
+section img ~ img {
+	margin: 0 0 1em 0;
 }
 
 section ul {
