@@ -122,6 +122,13 @@ section h2 {
 	text-align: left;
 }
 
+section h3 {
+	margin: 0;
+	color: var(--dark-gray);
+	font-size: 2vw;
+	text-align: left;
+}
+
 section p {
 	margin: 0;
 	font-size: 1.75vw;
@@ -133,7 +140,7 @@ section i {
 }
 
 section img {
-	max-height: 30vh;
+	max-height: 50vh;
 	max-width: 100%;
 	margin: 1em 0;
 }

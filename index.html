@@ -19,33 +19,33 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="#summary">
-							<p>Summary Figure</p>
+						<a href="#review">
+							<p>Review</p>
 						</a>
 					</li>
 					<li>
-						<a href="#introduction">
-							<p>Introduction</p>
+						<a href="#correlation">
+							<p>Correlation Heatmap</p>
 						</a>
 					</li>
 					<li>
-						<a href="#methods">
-							<p>Methods</p>
+						<a href="#data">
+							<p>Data Processing</p>
 						</a>
 					</li>
 					<li>
-						<a href="#results">
-							<p>Results</p>
+						<a href="#pca">
+							<p>PCA</p>
 						</a>
 					</li>
 					<li>
-						<a href="#discussion">
-							<p>Discussion</p>
+						<a href="#cluster">
+							<p>Clustering Approach</p>
 						</a>
 					</li>
 					<li>
-						<a href="#references">
-							<p>References</p>
+						<a href="#eval">
+							<p>Clustering Evaluation</p>
 						</a>
 					</li>
 					<li style="float: right">
@@ -54,184 +54,121 @@
 							<p>View on Github</p>
 						</a>
 					</li>
+					<li style="float: right">
+						<a href="/proposal.html">
+							<p>Proposal</p>
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
 		<main>
-			<section id="summary">
-				<h2>Summary Figure</h2>
+			<section id="review">
+				<h2>Review</h2>
 				<p>
-					<i>
-						one infographic prepared by your team that summarizes your project
-						goal
-					</i>
-				</p>
-				<br />
-				<p>
-					The goal of the project is to create a model that can determine a
-					protein sequence's <i>antibody valence</i> &mdash; whether it is
-					possible to use as a vaccine &mdash; based on its chemical properties.
-					We hope to find a clustering solution such that such sequences with
-					antibody valence are clustered together, and a neural network which
-					can assign a sequence a binary classification where "True" would mean
-					that sequence could be useful as a vaccine.
-				</p>
-				<img src="assets/clustering_idea.png" />
-				<img src="assets/nn_idea.png" />
-			</section>
-			<section id="introduction">
-				<h2>Introduction</h2>
-				<p>
-					<i>
-						discussing the problem you aim to address, your motivation and goal
-					</i>
-				</p>
-				<br />
-				<p>
-					This project aims to address the problem of selecting which parts of a
-					virus's protein shell can be used to create a vaccine. Instead of
-					manually searching for and testing each <i>epitope</i> &mdash; a
-					region of the protein sequence &mdash; individually, vaccine
-					developers would use this model to narrow down their options to only
-					those epitopes most likely to produce an immune response. When the
-					epitopes trigger an immune response, they are "antibody-valent" and
-					bind with antibodies. This prompts B-cells to fight and remember the
-					virus, the goal of a vaccine.
-				</p>
-				<img src="assets/epitope_antibody.png" />
-				<p>
-					Narrowing the search should speed up the process of determining which
-					protein sequences should be synthesized and tested as a vaccine in
-					clinical trials. The motivation is that with quicker time to clinical
-					trials and a higher liklihood of those trials producing a functional
-					vaccine, vaccines for new contagions can be produced more quickly,
-					potentially saving lives.
+					The data we'll be using comes from three seperate datasets with the same features.
+					Each entry in the datasets is a separate <i>epitope</i>, which is a region of the
+					protein shell of a virus. The features of the dataset are an assortment of chemical
+					properties of each epitope. Which virus the epitope is from is precisely the
+					difference between the three datasets: we have a large, labeled general dataset for
+					"B-Cell" epitopes, which refers	a collection of many miscellanious viruses. There is
+					a smaller labeled dataset for SARS, which is a virus closely related to COVID-19,
+					and then we have a large but unlabeled dataset for COVID-19. The labels are for
+					"antibody valency"; a valent epitope can be used as a vaccine, while a nonvalent
+					epitope cannot. So, the task is to use the features of each epitope in the labeled
+					datasets to build a model which can predict the antibody valencies for COVID-19 epitopes.
 				</p>
 			</section>
-			<section id="methods">
-				<h2>Methods</h2>
-				<p>
-					<i>
-						outlining the dataset you are planning on utilizing and the
-						techniques you intend to apply
-					</i>
-				</p>
-				<br />
-				<p>
-					We intend to use the
-					<a href="https://www.kaggle.com/futurecorporation/epitope-prediction">
-						COVID-19/SARS B-cell Epitope Prediction
-					</a>
-					database derived from <a href="https://www.iedb.org/">IEDB</a> and
-					<a href="https://www.uniprot.org/">UniProt</a>.&nbsp This database
-					contains 14 features of 14907 epitopes divided into general B-Cells
-					and SARS.&nbsp It also contains 13 features of 20305 COVID-19 epitopes
-					which we will label with antibody valence during the supervised phase
-					of our project.
-				</p>
-				<img src="assets/clustering_example.png" />
-				<p>
-					For the unsupervised learning phase of our project, we intend to
-					perform feature engineering through two approaches.&nbsp First
-					clustering our data using clustering algorithms such as KMeans, GMM,
-					and DBScan.&nbsp We will then perform clustering analysis to determine
-					the efficacy of each approach for our dataset.&nbsp This can help us
-					find underlying similarities in our data which can help us determine
-					which features are important for predicting vaccine candidacy.&nbsp
-					Second, we will use Principal Component Analysis to reduce the
-					dimensionality of our data as appropriate.
-				</p>
-				<img src="assets/supervised_example.png" />
-				<p>
-					For the supervised learning phase of our project, we plan to use an
-					ensemble of a random forest along with a neural network in order to
-					predict antibody valence (and thus vaccine efficacy) given a protein
-					sequence and relevant features.&nbsp We will split our labeled data
-					into a training and testing set to accomplish this, however,
-					ultimately we intend to classify the unlabelled COVID-19 Epitopes.
-				</p>
+			<section id="correlation">
+				<h2>Correlation Matrix Heatmap</h2>
+				<p>TODO Explanation of heatmaps</p>
+				<img src="assets/midterm/correlationbcell.png" />
+				<img src="assets/midterm/correlationsars.png" />
+				<img src="assets/midterm/correlationcovid.png" />			
 			</section>
-			<section id="results">
-				<h2>Results</h2>
-				<p>
-					<i> describing the results your team is trying to achieve </i>
-				</p>
-				<br />
-				<p>
-					Our intended result is to identify which antigens could be used in a
-					COVID-19 vaccine, based on antibody valence. To evaluate the
-					performance of our model, we will be splitting our data into a
-					training and testing set. We want to emphasize our goal of having a
-					high recall. This is vital because we must make sure that we do not
-					have any false negatives- this would mean missing epitopes that could
-					be used in a vaccine. Although precision is also important, having a
-					false negative would cause much more harm than having a false positive
-					in our case. Therefore, we want to mainly ensure that we are gathering
-					all possible solutions.
-				</p>
-				<img src="assets/results_chart.png" />
+			<section id="data">
+				<h2>Data Processing</h2>
+				<p>TODO talk about removing columns and normalizing data</p>
+				<img src="assets/midterm/data.png" />
 			</section>
-			<section id="discussion">
-				<h2>Discussion</h2>
-				<p>
-					<i>
-						explaining what would be the best outcome, what it would mean, what
-						is next, etc.
-					</i>
-				</p>
-				<br />
-				<p>
-					Our ideal output would be a model that predicts the antibody valence
-					of a given protein sequence and relavant traits of the protein. We aim
-					to narrow down the list of epitopes to test for the vaccine of
-					COVID-19 or similar strains of the virus by optimizing our model to
-					dismiss false negatives.
-					<br />
-					<br />
-					With a successful model, scientists and vaccine manufacturers gain a
-					deeper insight into immune responses to COVID-19 and similar strains
-					of the virus. In turn, this results in a faster development of
-					COVID-19 vaccine, and future vaccines of similar viruses. As vaccines
-					are essential for immunity against the virus, this model can in turn
-					eliminate the spread of the COVID-19 virus.
-				</p>
-				<img src="assets/discussionInfographic.png" />
+			<section id="pca">
+				<h2>Principal Component Analysis</h2>
+				<h3>Recovered Variance</h3>
+				<p>TODO explain plots below</p>
+				<img src="assets/midterm/variancebcell.png" />
+				<img src="assets/midterm/variancesars.png" />
+				<img src="assets/midterm/variancecovid.png" />
+				<h3>Component Feature Composition</h3>
+				<p>TODO explain meaning of the bar graphs</p>
+				<img src="assets/midterm/componentbcellraw.png" />
+				<img src="assets/midterm/componentbcellnorm.png" />
+				<img src="assets/midterm/componentsarsraw.png" />
+				<img src="assets/midterm/componentsarsnorm.png" />
+				<img src="assets/midterm/componentcovidraw.png" />
+				<img src="assets/midterm/componentcovidnorm.png" />
+				<h3>Scatterplots</h3>
+				<p>TODO explain what these scatterplots show</p>
+				<img src="assets/midterm/scatterbcellraw.png" />
+				<img src="assets/midterm/scatterbcellnorm.png" />
+				<img src="assets/midterm/scattersarsraw.png" />
+				<img src="assets/midterm/scattersarsnorm.png" />
+				<img src="assets/midterm/scattercovidraw.png" />
+				<img src="assets/midterm/scattercovidnorm.png" />
 			</section>
-			<section id="references">
-				<h2>References</h2>
+			<section id="cluster">
+				<h2>Clustering Approach</h2>
+				<p>TODO explain meaning of plots</p>
+				<img src="assets/midterm/numclustersbcell.png" />
+				<img src="assets/midterm/numclusterssars.png" />
+				<img src="assets/midterm/numclusterscovid.png" />
+			</section>
+			<section id="eval">
+				<h2>Clustering Evaluation</h2>
 				<p>
-					<i>
-						list containing at least three references, preferably peer reviewed
-					</i>
+					One simple statistic we can look at to begin evaluating the
+					clustering models is the number of data points in each cluster.
+					This does not imply correctness or incorrectness, but can tell us
+					the sizes of each group.
+				</p>
+				<img src="assets/midterm/clusterpointsbcell.png" />
+				<img src="assets/midterm/clusterpointssars.png" />
+				<img src="assets/midterm/clusterpointscovid.png" />
+				<p>
+					The clusters' sizes are fairly even between the B-Cell and COVID-19
+					epitopes, but half of the SARS clusters are much smaller than the others.
+					This is interesting but does not necessarily mean anything. SARS is also
+					the smallest dataset, so the uneven cluster sizes might be caused by that.
 				</p>
 				<br />
 				<p>
-					Jose L. Sanchez-Trincado, Marta Gomez-Perosanz, Pedro A. Reche,
-					"Fundamentals and Methods for T- and B-Cell Epitope Prediction",
-					<em>Journal of Immunology Research</em>, vol. 2017, Article ID
-					2680160, 14 pages, 2017.
-					<a href="https://doi.org/10.1155/2017/2680160">
-						https://doi.org/10.1155/2017/2680160
-					</a>
+					We have ground truth labels for the B-Cell and SARS epitopes, so we can
+					compare the total number of valent and nonvalent epitopes in each cluster.
+					With those totals, we can also calculate purity for the clusters: the
+					portion of data points in that cluster which belong to that cluster's
+					most numerous ground truth label.
 				</p>
+				<img src="assets/midterm/valentbcell.png" />
+				<img src="assets/midterm/puritybcell.png" />
 				<p>
-					Kunchur Guruprasad, B.V.Bhasker Reddy, Madhusudan W. Pandit,
-					Correlation between stability of a protein and its dipeptide
-					composition: a novel approach for predicting
-					<em>in vivo</em> stability of a protein from its primary sequence,
-					<em>Protein Engineering, Design and Selection</em>, Volume 4, Issue 2,
-					December 1990, Pages 155–161,
-					<a href="https://doi.org/10.1093/protein/4.2.155">
-						https://doi.org/10.1093/protein/4.2.155
-					</a>
+					For the B-Cell clusters, the purities range from about 0.65 to about 0.85.
+					This might seem decent initially because a purity of 1 is a perfect match
+					between clustering assignment and ground truth label. However, every cluster
+					is matching with the same label (nonvalent) and the portion of nonvalent
+					epitopes in the whole B-Cell dataset is about 0.75 (indicated with the red
+					dashed line). That means that the cluster assignments are more or less a
+					random sampling with regard to the ground truth label.
 				</p>
+				<img src="assets/midterm/valentsars.png" />
+				<img src="assets/midterm/puritysars.png" />
 				<p>
-					Lundegaard, Claus et al. “Prediction of epitopes using neural network
-					based methods.”
-					<em>Journal of immunological methods</em> vol. 374,1-2 (2011): 26-34.
-					<a href="https://doi.org/10.1016/j.jim.2010.10.011">
-						https://doi.org/10.1016/j.jim.2010.10.011
-					</a>
+					Unlike the B-Cell clusters, there are two clusters in the SARS model which
+					match with the valent ground truth label. One of them even has a purity of
+					1! Unfortunately, those are also the two smallest clusters, so they aren't
+					very useful for the majority of the data points. Among the remaining clusters,
+					we observe the same trend as the B-Cell data: each cluster has a roughly random
+					sample of valent and nonvalent datapoints. These observations lead us to believe
+					that clustering is insufficent for building the desired model to classify epitopes
+					and that we will need to utilize supervised learning to achieve better results.
 				</p>
 			</section>
 		</main>
