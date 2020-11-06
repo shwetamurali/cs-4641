@@ -88,8 +88,34 @@
 			</section>
 			<section id="data">
 				<h2>Data Processing</h2>
-				<p>TODO talk about removing columns and normalizing data</p>
+				<p>
+					Before we could get started with unsupervised learning on our data,
+					we had to clean the data.  This meant a number of steps to convert our
+					datasets into a format which would be suitable for the unsupervised
+					learning algorithms.
+				</p>
+				<h5>Sample of B-Cell Data Before Cleaning</h5>
 				<img src="assets/midterm/data.png" />
+				<p>
+					First we removed the string based columns from the dataset such as
+					<tt>protein_seq</tt> and <tt>peptide_seq</tt>.  This left us with only
+					numerical data to work with.  Next we removed data that was meant solely
+					for clerical purposes such as <tt>id</tt>, <tt>parent_protein_id</tt>,
+					<tt>start_index</tt>, and <tt>end_index</tt>, which are useful for indexing
+					the protein within the original dataset, but will not be useful features
+					for learning properties of proteins which make them effective vaccine candidates.
+					We also removed the target columns because this cleaning was for the
+					unsupervised phase of our project.
+				</p>
+				<br>
+				<p>
+					After removing columns that were not useful and the target column,
+					we decided to normalize the data to help avoid issues that could arise
+					from different scaling of the features in the dataset.  To do this we
+					subtracted the minimum value of the feature and divided by the range.
+				</p>
+				<h5>Sample of B-Cell Data After Cleaning</h5>
+				<img src="assets/midterm/data_cleaned.png" />
 			</section>
 			<section id="pca">
 				<h2>Principal Component Analysis</h2>
