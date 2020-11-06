@@ -201,11 +201,15 @@
 				<h2>Clustering Approach</h2>
 				<p>To achieve an optimal cluster assignment for the datapoints, it is recommended to find an optimal number
 				of clusters first. Thus, we plotted the Distortion score derived from scipy Cluster algorithms log-likelihood score functions. 
+				</p>
 				<br>
+				<p>
 				However, we took this opportunity to test the similarities between the three datasets we have: COVID, B-cell, and SARS. We tested KMeans and GMM on 
 				the given datasets, and in turn evaluated which of these two worked the best in regards to the score resulting from their corresponding functions.
 				In addition, we tested which form of teh datasets worked better overall in these cluser algorithms: raw untouched dataset, or numerical normalized dataset. 
+				</p>
 				<br>
+				<p>
 				From the analysis of these three graphs, we found that the 6 number of clusters to be good middle ground between too high and low in regards to the score as well. 
 				In nearly all of the three datasets, KMeans either performs equally as well or better than GMM, thus we decided on the KMeans as the better clustering algorithm for such 
 				datasets. For ease of manipulation, and understanding, we made a group decision of using normalized datasets at every possible point in the project. Overall, the plots 
