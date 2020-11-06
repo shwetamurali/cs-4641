@@ -55,7 +55,7 @@
 						</a>
 					</li>
 					<li style="float: right">
-						<a href="/proposal.html">
+						<a href="proposal.html">
 							<p>Proposal</p>
 						</a>
 					</li>
@@ -84,7 +84,7 @@
 				<p>TODO Explanation of heatmaps</p>
 				<img src="assets/midterm/correlationbcell.png" />
 				<img src="assets/midterm/correlationsars.png" />
-				<img src="assets/midterm/correlationcovid.png" />			
+				<img src="assets/midterm/correlationcovid.png" />
 			</section>
 			<section id="data">
 				<h2>Data Processing</h2>
@@ -93,27 +93,83 @@
 			</section>
 			<section id="pca">
 				<h2>Principal Component Analysis</h2>
+				<p>
+					One approach we took in feature engineering with our dataset was
+					Principal Component Analysis.  We applied PCA to our B-Cell, SARS,
+					and COVID-19 datasets and plotted the recovered variance as a function
+					of how many components we preserved.
+				</p>
+				<br>
 				<h3>Recovered Variance</h3>
-				<p>TODO explain plots below</p>
 				<img src="assets/midterm/variancebcell.png" />
 				<img src="assets/midterm/variancesars.png" />
 				<img src="assets/midterm/variancecovid.png" />
+				<p>
+					Looking at the raw datasets it appears that PCA was able to
+					successfully reduce the dimensionality of the datasets while
+					maintaining variance, however upon looking at the normalized data
+					this was not the same case.  It is important to note that while it
+					appears that SARS and COVID only require 4 principal components to
+					capture all the variance, this is because only 4 of the features vary
+					for the SARS and COVID data, so this is not an indicator of successful
+					dimensionality reduction.  To further explore this phenomenon of the
+					normalized data taking more components to recover the variance,
+					we plotted the composition of the principal components for both the
+					normalized and raw data.
+				</p>
+				<br>
 				<h3>Component Feature Composition</h3>
-				<p>TODO explain meaning of the bar graphs</p>
+				<h5>B-Cell Principal Component Composition Raw vs Normalized</h5>
 				<img src="assets/midterm/componentbcellraw.png" />
 				<img src="assets/midterm/componentbcellnorm.png" />
+				<br>
+				<h5>SARS Principal Component Composition Raw vs Normalized</h5>
 				<img src="assets/midterm/componentsarsraw.png" />
 				<img src="assets/midterm/componentsarsnorm.png" />
+				<br>
+				<h5>COVID-19 Principal Component Composition Raw vs Normalized</h5>
 				<img src="assets/midterm/componentcovidraw.png" />
 				<img src="assets/midterm/componentcovidnorm.png" />
+				<p>
+					Looking at these bar graphs it becomes clear that the raw datasets
+					are able to recover so much of the variance because that variance is
+					captured by only a few features, where the normalized datasets have
+					a greater contribution from a wider spread of features.
+				</p>
+				<br>
+				<p>
+					With this insight that normalizing our datasets led to more
+					representative principal components, and that we would need to use
+					an equal number of components to features to capture an acceptable
+					amount of variance in our dataset, we determined PCA would not be
+					useful for dimensionality reduction in feature engineering for our
+					data.
+				</p>
+				<br>
 				<h3>Scatterplots</h3>
-				<p>TODO explain what these scatterplots show</p>
+				<p>
+					As one last step to see if PCA could be of any use to us we decided
+					to plot our datasets after reducing them to their two primary principal
+					components.  For the B-Cell and SARS datasets we also had labels for
+					vaccine efficacy - our target value, so we colored the scatter plots based
+					on those target values to see if there were any trends in our reduced
+					datasets.
+				</p>
+				<h5>B-Cell Dataset Plotted on 2 Principal Axis</h5>
 				<img src="assets/midterm/scatterbcellraw.png" />
 				<img src="assets/midterm/scatterbcellnorm.png" />
+				<br>
+				<h5>SARS Dataset Plotted on 2 Principal Axis</h5>
 				<img src="assets/midterm/scattersarsraw.png" />
 				<img src="assets/midterm/scattersarsnorm.png" />
+				<br>
+				<h5>COVID-19 Dataset Plotted on 2 Principal Axis</h5>
 				<img src="assets/midterm/scattercovidraw.png" />
 				<img src="assets/midterm/scattercovidnorm.png" />
+				<p>
+					Unfortunately, plotting the datasets on their principal axis did
+					not reveal any obvious trends in the data.
+				</p>
 			</section>
 			<section id="cluster">
 				<h2>Clustering Approach</h2>
