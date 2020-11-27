@@ -79,12 +79,25 @@ nav a {
 	color: var(--white);
 	margin: 0;
 	transition-duration: 300ms;
-	text-decoration: none;
 	font-size: 18px;
 }
 
 nav a:hover {
 	background-color: var(--dark-primary);
+}
+
+.dropdown {
+	position: absolute;
+	display: none;
+}
+
+.dropdown a {
+	display: block;
+	padding: 10px;
+}
+
+nav li:hover .dropdown {
+	display: block;
 }
 
 nav p {
@@ -102,6 +115,11 @@ nav img {
 main {
 	text-align: center;
 	margin: 0;
+}
+
+main h1 {
+	text-decoration: underline;
+	font-size: 3em;
 }
 
 section {
