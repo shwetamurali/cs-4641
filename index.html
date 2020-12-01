@@ -477,8 +477,32 @@
 			<section id="svm">
 				<h2>SVM</h2>
 				<p>
-					
+					Since SVM classifier is sensitive to certain parameters, including kernel function, kernel function coefficient, regularization strength, and more. 
+					We first tested all applicable kernels with a sample Bcell dataset test to determine the best kernel for our type of data. With the test results, 
+					we discovered that two of three applicable kernels were equal in the resulting accuracy in the testing. After testing with SARS sample dataset, we observed 
+					a small higher accuracy with the Radial Basis Function Kernel (aka 'rbf') when compared with Linear Function Kernel. 
+					Further testing with SVM was conducted with rbf kernel. 
 				</p>
+				<img src="assets/final/svmSampleKernel.png" />
+				<p>
+					With this function kernel, it is unnecessary to test for an optimal cofficient, since the rbf kernel classifies appropriately without a coefficient. 
+					However, that is not the case for the regularization strength parameter, with the used sklearn functions, the user is able to pass in a value for the magnitude
+					of the regularization strength. By testing with the rbf kernel, we observed accuracy with various magnitudes of the regularization strength. As expected,
+					there existed a positive/ direct relationship between the regularization strength magnitude, and accuracy with the rbf kernel. 
+					On the other hand, this relationship is negligible due to the minimal increase over the magnitude change as you can see below. We, as a group, finalized that the
+					parameter should be set at 5 to reduce the runtime, and keep the regularization strength significant. 
+				</p>
+				<br>
+				<img src="assets/final/svmRegularization.png" />
+				<p>
+					After the parameters finalized, we trained and tested the various datasets. The various testing and training took place differentiating the testing and training data to the best of
+					our abilities without harming our dataset. For example, we concatenated the Bcell and SARS training datasets to best represent the COVID- 19 training dataset and as a summary 
+					of both datasets. We discovered that our data might not be suited for the SVM classifier, becasue no matter
+					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing. 
+				</p>
+				<br>
+				<img src="assets/final/svmAccuracies.png" />
+
 			</section>
 			<section id="comparison">
 				<h2>Supervised Model Comparision</h2>
