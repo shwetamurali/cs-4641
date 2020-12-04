@@ -49,6 +49,7 @@
 							<p>Supervised Learning</p>
 						</a>
 						<div class="dropdown">
+							<a href="#dataprep">Data Preparation</a>
 							<a href="#decisiontrees">Decision Trees</a>
 							<a href="#ensemble">Ensemble Learning</a>
 							<a href="#mlp">Multilayer Perceptrons</a>
@@ -68,6 +69,7 @@
 		</header>
 		<main>
 			<h1 id="proposal">Proposal</h1>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tpGlgpQrObM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<section id="summary">
 				<h2>Summary Figure</h2>
 				<p>
@@ -245,6 +247,7 @@
 				</p>
 			</section>
 			<h1 id="unsupervised">Unsupervised Learning</h1>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/T5_KH_oPR_Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<section id="review">
 				<h2>Review</h2>
 				<p>
@@ -456,6 +459,17 @@
 				</p>
 			</section>
 			<h1 id="supervised">Supervised Learning</h1>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9217NSuTW-k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<section id="dataprep">
+				<h2>Data Preparation</h2>
+				<p>
+					Preparing the data for supervised learning was relatively simple. We normalized
+					all three datasets based on the range of the B-Cell dataset and separated the
+					ground-truth labels for the B-Cell and SARS into "Y" lists for each of the epitopes.
+					The actual features (chemical properties) were the "X" lists. We then randomly
+					selected 30% of the data to be testing data while our models train on the remaining 70%.
+				</p>
+			</section>
 			<section id="decisiontrees">
 				<h2>Decision Trees</h2>
 				<p>
@@ -465,7 +479,52 @@
 			<section id="ensemble">
 				<h2>Ensemble Learning</h2>
 				<p>
-					
+					It is known that ensemble learning methods can often work better than a single supervised
+					model on its own. For this reason, we experimented with Random Forests, and a similar
+					alternative called Extra Trees which is provided by scikit-learn.
+				</p>
+				<img src="assets/final/ensembleEstimators.png" />
+				<p>
+					This graph is designed to determine two things:
+				</p>
+				<ol>
+					<li>Does Random Forest or Extra Trees perform better on our data?</li>
+					<li>At what number of estimators does the accuracy converge?</li>
+				</ol>
+				<p>
+					The dotted lines are the accuracies on the training set, which is always 1 for the Extra Trees
+					classifiers. The solid red and green lines show that both types of classifiers perform about
+					the same on the general B-Cell data, but the orange and blue lines reveal that the Extra trees
+					performs a bit better than random forests on SARS data. Each model seems to stop improving after
+					at most 15 estimators, so we will be proceeding with an Extra Trees model with 15 estimators.
+				</p>
+				<br />
+				<p>
+					We wondered how the model trained on B-cell data performs on the SARS dataset and vice versa.
+					Then we wondered, what would happen if we trained a classifier using both testing data?
+					The answers to those questions are summarized in this graph:
+				</p>
+				<img src="assets/final/ensembleAccuracy.png" />
+				<p>
+					The left two bars were trained only on B-Cell data while the middle two were trained only on
+					SARS. The right two were trained on both. The even columns are the accuracy on the B-Cell data,
+					and the odds are the accuracy on SARS. We see that training on both actually retains the accuracy
+					achieved by training on the datasets separately since bar 4 is as tall as bar 0 and bar 5 is as
+					tall as bar 3. For this reason, we decided to use the Extra Trees classifier trained on both datasets
+					as our best Ensemble Learning model.
+				</p>
+				<br />
+				<p>
+					To learn more about how our classifier performed, we looked at a handful of metrics. In the
+					combined testing set (both B-Cell and SARS), 27.97% of the epitopes were valent, but our model
+					only predicted 23.09% to be valent. It achieved a total testing accuracy of 82.61%, which we
+					found was reasonable based on how well several other Kaggle attmepts performed. The valent
+					precision was 72.89% and the nonvalent was 85.52%. Perhaps the most important statistic is the
+					valent recall, which was 60.19%. That number means that about 3/5 of the potentially successful
+					vaccine epiptopes are correctly discovered while the other 2/5 are misclassified as nonvalent.
+					We would have liked the recall to be higher, but think that might be difficult using the features
+					we have. The non-valent recall was 91.31%, so most of the protein sequences which would not work
+					as a vaccine were correctly identified as such.
 				</p>
 			</section>
 			<section id="mlp">

@@ -118,8 +118,10 @@ main {
 }
 
 main h1 {
-	text-decoration: underline;
 	font-size: 3em;
+	border-bottom: 1px solid var(--white);
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
 section {
@@ -167,7 +169,8 @@ section img ~ img {
 	margin: 0 0 1em 0;
 }
 
-section ul {
+section ul,
+section ol {
 	text-align: left;
 }
 
