@@ -160,7 +160,7 @@
 					predict antibody valence (and thus vaccine efficacy) given a protein
 					sequence and relevant features.&nbsp We will split our labeled data
 					into a training and testing set to accomplish this, however,
-					ultimately we intend to classify the unlabelled COVID-19 Epitopes.
+					ultimately we intend to classify the unlabeled COVID-19 Epitopes.
 				</p>
 			</section>
 			<section id="results">
@@ -565,15 +565,36 @@
 			</section>
 			<section id="comparison">
 				<h2>Supervised Model Comparision</h2>
+				<img src="assets/final/compareAccuracies.png" />
 				<p>
-					
+					Plotting the accuracies of each method side-by-side, we can observe that each model performed
+					roughly the same on the data. We wanted to pick one to use as our final predictor for COVID-19
+					though, so we had to decide on the "best" classifier. Even though multi-layer perceptrons
+					achieved a higher accuracy on the SARS testing set, we opted to use the Extra Trees model since
+					it performed better on the B-Cell testing set in hopes that it will generalize better to other
+					viruses, especially COVID-19.
 				</p>
 			</section>
 			<section id="covidpredictions">
 				<h2>COVID-19 Predictions</h2>
 				<p>
-					
+					We used our Extra Trees classifier to make predictions on the unlabeled COVID-19 epitopes
+					and noticed an interesting characteristic. The Extra Trees classifier underpredicted the
+					number of valent epitopes by about 5 percentage points, since there were actually ~28% valent
+					and our model only predicted ~23%. However, it predicted 33.68% of the COVID-19 epitopes as
+					valent. We can only speculate as to why this difference occurs; perhaps COVID-19 actually does
+					have a higher ratio of valent epitopes, or maybe our model doesn't have enough information to
+					rule out some of the false positives. We hope the first explanation is correct.
 				</p>
+				<br />
+				<p>
+					Out of the 20312 unlabeled COVID-19 protein sequences, we predicted 6841 to be candidates for
+					use in a vaccine. A sample of those proteins are listed below:
+				</p>
+				<br />
+				<code>
+					['MGILP', 'GILPS', 'ILPSP', 'LPSPG', 'PSPGM', 'SPGMP', 'PALLS', 'LLSLV', 'LSLVS', 'SLVSL', ...]
+				</code>
 			</section>
 		</main>
 	</body>
