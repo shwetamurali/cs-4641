@@ -739,22 +739,31 @@
 				<h2>COVID-19 Predictions</h2>
 				<p>
 					We used our Extra Trees classifier to make predictions on the unlabeled COVID-19 epitopes
-					and noticed an interesting characteristic. The Extra Trees classifier underpredicted the
+					and noticed an interesting characteristic. On the testing data for B-Cell and SARS, the Extra
+					Trees classifier underpredicted the
 					number of valent epitopes by about 5 percentage points, since there were actually ~28% valent
-					and our model only predicted ~23%. However, it predicted 33.68% of the COVID-19 epitopes as
-					valent. We can only speculate as to why this difference occurs; perhaps COVID-19 actually does
+					and our model only predicted ~23%. However, in the unlabeled COVID-19 data, it predicted 33.68%
+					of the COVID-19 epitopes as
+					valent. We can only speculate as to why this difference occurs; perhaps the COVID-19 virus
+					actually does
 					have a higher ratio of valent epitopes, or maybe our model doesn't have enough information to
 					rule out some of the false positives. We hope the first explanation is correct.
 				</p>
 				<br />
 				<p>
-					Out of the 20312 unlabeled COVID-19 protein sequences, we predicted 6841 to be candidates for
+					Out of the 20,312 unlabeled COVID-19 protein sequences, we predicted 6,841 to be candidates for
 					use in a vaccine. A sample of those proteins are listed below:
 				</p>
 				<br />
 				<code>
 					['MGILP', 'GILPS', 'ILPSP', 'LPSPG', 'PSPGM', 'SPGMP', 'PALLS', 'LLSLV', 'LSLVS', 'SLVSL', ...]
 				</code>
+				<br />
+				<p>
+					However, it seems that our predictions came too late to be useful, which is actually a good thing.
+					There are now multiple highly effective and safe vaccines on the way. Hopefully what we learned
+					from the project can still be useful for accelerating vaccine development for future viruses.
+				</p>
 			</section>
 		</main>
 	</body>
