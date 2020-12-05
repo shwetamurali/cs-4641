@@ -179,6 +179,10 @@ section ol {
 	text-indent: -1em;
 }
 
+iframe {
+	margin: 15px;
+}
+
 /*
   These adjustments help the website look better on mobile
 */
