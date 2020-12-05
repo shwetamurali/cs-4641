@@ -618,11 +618,19 @@
 					After the parameters finalized, we trained and tested the various datasets. The various testing and training took place differentiating the testing and training data to the best of
 					our abilities without harming our dataset. For example, we concatenated the Bcell and SARS training datasets to best represent the COVID- 19 training dataset and as a summary
 					of both datasets. We discovered that our data might not be suited for the SVM classifier, becasue no matter
-					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing.
+					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing. This testing follows the same format used with the 
+					Ensemble Learning format testing.
 				</p>
 				<br>
 				<img src="assets/final/svmAccuracies.png" />
-
+				<br>
+				<p>
+					SVM couldn't spatially define and separate the valent and non valent features of the dataset due to the kernel function. 
+					In turn, SVM has predicted that all epitopes/ datapoints are non-valent, where other models countered with thousands of valent epitopes. 
+					In addition, our datasets were not able to clustered in small number of clusters, which reveals that there doesn't exist an easy 
+					definitive way to classify valent features, which was further proven with this SVM classifier method. 
+				</p>
+				<img src="assets/final/svmMetrics.png" />
 			</section>
 			<section id="comparison">
 				<h2>Supervised Model Comparision</h2>
