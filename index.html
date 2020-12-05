@@ -473,8 +473,31 @@
 			<section id="decisiontrees">
 				<h2>Decision Trees</h2>
 				<p>
-
+					We plotted what accuracies the decision tree would have with different depths. For the B-cell dataset, 
+					a depth of about 10 is most accurate, at around 82%.  Overfitting is crucial to avoid here. 
+					The accuracy wanes when you get to a depth of 15 since the model is more complex and there 
+					are more splits and specifics that fit really well for the training data but will 
+					not generalize well for the testing set.
 				</p>
+				<img src="assets/final/aVSmd_bcell.PNG" />
+				<p>
+					The SARS graph looks a little different. A max depth of about 2 has the highest accuracy, 
+					at 72%. This lessened accuracy is largely due to not having as much data in this dataset.
+				</p>
+				<img src="assets/final/aVSmd_sars.PNG" />
+				<p>
+					For the B-cell decision tree, the most prominent features that the tree split by were hydrophobicity and stability. 
+					Out of all the outcomes, there are two that have a significant number of corresponding samples compared to the rest.
+				</p>
+				<img src="assets/final/bcell_tree.PNG" />
+				<p>
+					For SARS, the most prominent features that the tree split by were emini and chou-fasman.
+				</p>
+				<img src="assets/final/sars_tree.PNG" />
+				<p>
+					It’s interesting to note the differences in the features that were more telling of a certain outcome in both datasets.
+				</p>
+		
 			</section>
 			<section id="ensemble">
 				<h2>Ensemble Learning</h2>
@@ -620,11 +643,20 @@
 					After the parameters finalized, we trained and tested the various datasets. The various testing and training took place differentiating the testing and training data to the best of
 					our abilities without harming our dataset. For example, we concatenated the Bcell and SARS training datasets to best represent the COVID- 19 training dataset and as a summary
 					of both datasets. We discovered that our data might not be suited for the SVM classifier, becasue no matter
-					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing.
+					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing. This testing follows the same format used with the 
+					Ensemble Learning format testing.
 				</p>
 				<br>
 				<img src="assets/final/svmAccuracies.png" />
-
+				<br>
+				<p>
+					SVM couldn't spatially define and separate the valent and non valent features of the dataset due to the kernel function. 
+					In turn, SVM has predicted that all epitopes/ datapoints are non-valent, where other models countered with thousands of valent epitopes. 
+					In addition, our datasets were not able to clustered in small number of clusters, which reveals that there doesn't exist an easy 
+					definitive way to classify valent features, which was further proven with this SVM classifier method. 
+				</p>
+				<br>
+				<img src="assets/final/svmMetrics.png" />
 			</section>
 			<section id="comparison">
 				<h2>Supervised Model Comparision</h2>
