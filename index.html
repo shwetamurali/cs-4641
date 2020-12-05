@@ -266,9 +266,9 @@
 			</section>
 			<section id="correlation">
 				<h2>Correlation Matrix Heatmap</h2>
-				<p>For each of the three datasets, we plotted correlation matrix heatmaps to show the correlations between features. For the B-cell dataset, we see that the strongest correlation 
-					between features is between parker and kolaskar_tongaonkar, and that the correlation is negative. We can see that there are some features which have a stronger correlation to 
-					the target value, which is vaccine efficacy. On the other hand, in the SARS dataset, there are some feature with no correlation to the target value. These observations are 
+				<p>For each of the three datasets, we plotted correlation matrix heatmaps to show the correlations between features. For the B-cell dataset, we see that the strongest correlation
+					between features is between parker and kolaskar_tongaonkar, and that the correlation is negative. We can see that there are some features which have a stronger correlation to
+					the target value, which is vaccine efficacy. On the other hand, in the SARS dataset, there are some feature with no correlation to the target value. These observations are
 					important because when we are attempting to make predictions later on during the supervised learning portion of our project, we will emphasize the inclusion and exclusion
 					of those particular features. From these visualizations, it is clear that the features more strongly correlated to the target value in the SARS dataset than in the B-cell.</p>
 				<h5>B-Cell</h5>
@@ -392,21 +392,21 @@
 			<section id="cluster">
 				<h2>Clustering Approach</h2>
 				<p>To achieve an optimal cluster assignment for the datapoints, it is recommended to find an optimal number
-				of clusters first. Thus, we plotted the distortion score derived from the cluster algorithms' log-likelihood score functions versus the number of clusters. 
+				of clusters first. Thus, we plotted the distortion score derived from the cluster algorithms' log-likelihood score functions versus the number of clusters.
 				</p>
 				<br>
 				<p>
 				We took this opportunity to also compare clustering behaviors between the three datasets we have: COVID, B-cell, and SARS. We tested both KMeans and GMM,
 				and in turn evaluated which of these two worked the best based on the score resulting from their corresponding functions.
-				In addition, we tested which form of the datasets worked better overall in these clustering algorithms: raw or normalized. 
+				In addition, we tested which form of the datasets worked better overall in these clustering algorithms: raw or normalized.
 				</p>
 				<img src="assets/midterm/numclustersbcell.png" />
 				<img src="assets/midterm/numclusterssars.png" />
 				<img src="assets/midterm/numclusterscovid.png" />
 				<p>
-				From the analysis of these three graphs, we found that the 6 number of clusters to be good middle ground between too high and low using the elbow method. 
-				In each of the three datasets, KMeans behaves better than GMM, and thus we decided on the KMeans as the better clustering algorithm. For ease of manipulation, and understanding, we made a group decision of using normalized datasets at every possible point in the project. Overall, the plots 
-				demonstrated that for the unsupervised learning part of the project, we should use the KMeans algorithm on the normalized datasets using 6 clusters as the starting point. 
+				From the analysis of these three graphs, we found that the 6 number of clusters to be good middle ground between too high and low using the elbow method.
+				In each of the three datasets, KMeans behaves better than GMM, and thus we decided on the KMeans as the better clustering algorithm. For ease of manipulation, and understanding, we made a group decision of using normalized datasets at every possible point in the project. Overall, the plots
+				demonstrated that for the unsupervised learning part of the project, we should use the KMeans algorithm on the normalized datasets using 6 clusters as the starting point.
 				</p>
 			</section>
 			<section id="eval">
@@ -473,7 +473,7 @@
 			<section id="decisiontrees">
 				<h2>Decision Trees</h2>
 				<p>
-					
+
 				</p>
 			</section>
 			<section id="ensemble">
@@ -530,34 +530,72 @@
 			<section id="mlp">
 				<h2>Multilayer Perceptrons</h2>
 				<p>
-					
+					In training our Multilayer Perceptron model we decided to begin by optimizing hyperparameters, specifically
+					through optimizing our model architecture.  In order to accomplish this we tested the accuracy of the model
+					with various different numbers of nodes in each layer and variable numbers of layers.
+				</p>
+				<h5>Accuracy of MLP models with different numbers of nodes in first two layers</h5>
+				<img src="assets/final/2LayerTest.png"/>
+				<img src="assets/final/2LayerTest.png"/>
+				<p>
+					The first layer seemed to have the largest influence on model performance so we decided to lock in the first
+					layer at about 80 nodes where it was having consistently relatively high accuracy scores.  Next we wanted to
+					determine the best number of nodes for the second and third layers.
+				</p>
+				<h5>Accuracy of MLP models with hidden layers [80, X, Y]</h5>
+				<img src="assets/final/3LayerTest.png"/>
+				<img src="assets/final/3LayerTest.png"/>
+				<p>
+					After training several different model sizes the model of shape [80 x 50 x 20] seemed to have high
+					accuracy on both the training and test sets so this was selected as our final model architecture.
+				</p>
+				<br>
+				<p>
+					Now we had to train our final models.  We started by training the 80 x 50 x 20 model separately
+					on both the B-Cell and SARS data for 10,000 iterations with a learning rate of 1e-5.
+					This proved to be too many training iterations, because the training and testing accuracies
+					diverged suggesting that the model was finding very specific trends in the training data that
+					were not generalizable to the testing set.
+				</p>
+				<h5>Training the 80 x 50 x 20 models for 10000 iterations led to overfitting</h5>
+				<img width="35%" src="assets/final/BCellOverfittingMLP.png"/>
+				<img width="35%" src="assets/final/SARSOverfittingMLP.png"/>
+				<p>
+					To prevent this overfitting we restricted the models to fewer iterations for training.  For B-Cell
+					about 1000 iterations was sufficient and for SARS even fewer iterations (about 60) was optimal.
+				</p>
+				<h5>Training the models for fewer iterations actually yielded higher test set accuracies</h5>
+				<img width="35%" src="assets/final/BCellFewerItersMLP.png"/>
+				<img width="35%" src="assets/final/SARSFewerItersMLP.png"/>
+				<p>
+					The final Multilayer Perceptron models had 79.94% accuracy on the B-Cell data and 73.08% accuracy on the SARS data.
 				</p>
 			</section>
 			<section id="svm">
 				<h2>SVM</h2>
 				<p>
-					Since SVM classifier is sensitive to certain parameters, including kernel function, kernel function coefficient, regularization strength, and more. 
-					We first tested all applicable kernels with a sample Bcell dataset test to determine the best kernel for our type of data. With the test results, 
-					we discovered that two of three applicable kernels were equal in the resulting accuracy in the testing. After testing with SARS sample dataset, we observed 
-					a small higher accuracy with the Radial Basis Function Kernel (aka 'rbf') when compared with Linear Function Kernel. 
-					Further testing with SVM was conducted with rbf kernel. 
+					Since SVM classifier is sensitive to certain parameters, including kernel function, kernel function coefficient, regularization strength, and more.
+					We first tested all applicable kernels with a sample Bcell dataset test to determine the best kernel for our type of data. With the test results,
+					we discovered that two of three applicable kernels were equal in the resulting accuracy in the testing. After testing with SARS sample dataset, we observed
+					a small higher accuracy with the Radial Basis Function Kernel (aka 'rbf') when compared with Linear Function Kernel.
+					Further testing with SVM was conducted with rbf kernel.
 				</p>
 				<img src="assets/final/svmSampleKernel.png" />
 				<p>
-					With this function kernel, it is unnecessary to test for an optimal cofficient, since the rbf kernel classifies appropriately without a coefficient. 
+					With this function kernel, it is unnecessary to test for an optimal cofficient, since the rbf kernel classifies appropriately without a coefficient.
 					However, that is not the case for the regularization strength parameter, with the used sklearn functions, the user is able to pass in a value for the magnitude
 					of the regularization strength. By testing with the rbf kernel, we observed accuracy with various magnitudes of the regularization strength. As expected,
-					there existed a positive/ direct relationship between the regularization strength magnitude, and accuracy with the rbf kernel. 
+					there existed a positive/ direct relationship between the regularization strength magnitude, and accuracy with the rbf kernel.
 					On the other hand, this relationship is negligible due to the minimal increase over the magnitude change as you can see below. We, as a group, finalized that the
-					parameter should be set at 5 to reduce the runtime, and keep the regularization strength significant. 
+					parameter should be set at 5 to reduce the runtime, and keep the regularization strength significant.
 				</p>
 				<br>
 				<img src="assets/final/svmRegularization.png" />
 				<p>
 					After the parameters finalized, we trained and tested the various datasets. The various testing and training took place differentiating the testing and training data to the best of
-					our abilities without harming our dataset. For example, we concatenated the Bcell and SARS training datasets to best represent the COVID- 19 training dataset and as a summary 
+					our abilities without harming our dataset. For example, we concatenated the Bcell and SARS training datasets to best represent the COVID- 19 training dataset and as a summary
 					of both datasets. We discovered that our data might not be suited for the SVM classifier, becasue no matter
-					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing. 
+					the changes in the classifier parameters, we always ended up with an average of 71% accuracy on our various forms of testing.
 				</p>
 				<br>
 				<img src="assets/final/svmAccuracies.png" />
