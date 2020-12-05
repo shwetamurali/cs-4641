@@ -541,7 +541,7 @@
 					To learn more about how our classifier performed, we looked at a handful of metrics. In the
 					combined testing set (both B-Cell and SARS), 27.97% of the epitopes were valent, but our model
 					only predicted 23.09% to be valent. It achieved a total testing accuracy of 82.61%, which we
-					found was reasonable based on how well several other Kaggle attmepts performed. The valent
+					found was reasonable based on how well several other Kaggle attempts performed. The valent
 					precision was 72.89% and the nonvalent was 85.52%. Perhaps the most important statistic is the
 					valent recall, which was 60.19%. That number means that about 3/5 of the potentially successful
 					vaccine epiptopes are correctly discovered while the other 2/5 are misclassified as nonvalent.
@@ -691,14 +691,22 @@
 			</section>
 			<section id="comparison">
 				<h2>Supervised Model Comparision</h2>
-				<img src="assets/final/compareAccuracies.png" />
+				<img src="assets/final/AccuracyComparison.png" />
 				<p>
 					Plotting the accuracies of each method side-by-side, we can observe that each model performed
 					roughly the same on the data. We wanted to pick one to use as our final predictor for COVID-19
-					though, so we had to decide on the "best" classifier. Even though multi-layer perceptrons
-					achieved a higher accuracy on the SARS testing set, we opted to use the Extra Trees model since
-					it performed better on the B-Cell testing set in hopes that it will generalize better to other
-					viruses, especially COVID-19.
+					though, so we had to decide on the "best" classifier.&nbsp&nbspTo do this we looked
+					at the precision and recall.
+				</p>
+				<img width="45%" src="assets/final/PrecisionComparison.png"/>
+				<img width="45%" src="assets/final/RecallComparison.png"/>
+				<p>
+					The Extra Trees classifier had the best performance in precision and recall across all classes besides
+					Non-valent Recall.  This is because the SVM model classified nearly every epitope as non-valent so as a result it
+					didn't miss any non-valent epitopes.  Although this yielded a high Non-valent recall for the SVM
+					this did not effectively accomplish our goal of identifying <strong>valent</strong> epitopes.  The more important class
+					was the performance for valent epitopes.  For the valent epitopes the extra trees model had the strongest performance for
+					all measures.  As such we selected Extra Trees as our final model.
 				</p>
 			</section>
 			<section id="covidpredictions">
