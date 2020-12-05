@@ -473,21 +473,30 @@
 			<section id="decisiontrees">
 				<h2>Decision Trees</h2>
 				<p>
-
+					We plotted what accuracies the decision tree would have with different depths. For the B-cell dataset, 
+					a depth of about 10 is most accurate, at around 82%.  Overfitting is crucial to avoid here. 
+					The accuracy wanes when you get to a depth of 15 since the model is more complex and there 
+					are more splits and specifics that fit really well for the training data but will 
+					not generalize well for the testing set.
 				</p>
 				<img src="assets/final/aVSmd_bcell.PNG" />
 				<p>
-					
+					The SARS graph looks a little different. A max depth of about 2 has the highest accuracy, 
+					at 72%. This lessened accuracy is largely due to not having as much data in this dataset.
 				</p>
 				<img src="assets/final/aVSmd_sars.PNG" />
 				<p>
-					
+					For the B-cell decision tree, the most prominent features that the tree split by were hydrophobicity and stability. 
+					Out of all the outcomes, there are two that have a significant number of corresponding samples compared to the rest.
 				</p>
 				<img src="assets/final/bcell_tree.PNG" />
 				<p>
-					
+					For SARS, the most prominent features that the tree split by were emini and chou-fasman.
 				</p>
 				<img src="assets/final/sars_tree.PNG" />
+				<p>
+					It’s interesting to note the differences in the features that were more telling of a certain outcome in both datasets.
+				</p>
 		
 			</section>
 			<section id="ensemble">
